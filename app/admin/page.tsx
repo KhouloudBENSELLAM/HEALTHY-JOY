@@ -2,19 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Download, LogOut } from 'lucide-react'
-import { signOut } from "next-auth/react"
-import { useSession } from "next-auth/react"
+import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CartIcon } from "@/components/cart-icon"
 
 export default function AdminPage() {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const { data: session } = useSession()
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -84,24 +80,12 @@ export default function AdminPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation */}
-      {/* Navigation */}
       <header className="sticky top-0 z-50 w-full border-b bg-black">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-gold-500">CACAO LUXE</span>
+            <span className="text-xl font-bold text-gold-500">HEALTHY JOY </span>
           </Link>
-          <div className="flex items-center gap-4">
-            <span className="text-gold-500">Bonjour, {session?.user?.name}</span>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => signOut({ callbackUrl: "/" })}
-              className="border-gold-500 text-gold-500"
-            >
-              <LogOut className="mr-2 h-4 w-4" />
-              Déconnexion
-            </Button>
-          </div>
+          <div className="flex items-center gap-4">{/* Bouton de déconnexion retiré pour l'instant */}</div>
         </div>
       </header>
 
@@ -245,7 +229,7 @@ export default function AdminPage() {
             <div className="space-y-3">
               <h3 className="text-lg font-medium text-gold-500">Contact</h3>
               <ul className="space-y-1">
-                <li className="text-sm text-gray-400">khouloudbensellam78@gamil.com</li>
+                <li className="text-sm text-gray-400">khouloudbensellam78@gmail.com</li>
                 <li className="text-sm text-gray-400">+212 648 68 78 64</li>
                 <li className="text-sm text-gray-400">Tanger, Maroc</li>
               </ul>
